@@ -13,7 +13,8 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://18214151527.github.io/
+url: https://zuo-junyuan.gitee.io
+# root: /zuo-junyuan
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -62,7 +63,7 @@ prismjs:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 10
+  per_page: 9
   order_by: -date
 
 # Category & Tag
@@ -102,6 +103,6 @@ theme: zhaoo
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: "git"
+  type: git
   branch: master
-  repository: git@github.com:18214151527/ZcZjy.git
+  repo: git@gitee.com:zuo-junyuan/zuo-junyuan.git
