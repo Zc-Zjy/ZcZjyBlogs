@@ -10,12 +10,14 @@ categories: [前端技术,nodejs,npm、nrm、nvm、yarn]
 
 # 一、npm
 ###### 1、什么是npm？
-npm 是 Node.js 的包管理器，用于安装、管理、卸载 JavaScript 模块。npm 提供了一个包管理器，使得开发者可以方便使用第三方模块，同时也可以将自己编写的模块发布到 npm 上供其他人使用。
+npm 是 Node.js 的包管理器，用于安装、管理、卸载 JavaScript 模块。npm 提供了一个包管理器，使得开发者可以方便使用第三方模块，同时也可以将自己编写的模块发布到 npm 上供其他人使用。（npm相当于后端的maven，帮助我们下载依赖）
 **注意：**
 	npm不用安装，只要安装了nodejs就有了。
-###### 2、官网地址：[https://www.npmjs.com/](https://www.npmjs.com/)
-###### 3、中文官网地址：[https://www.npmjs.cn/](https://www.npmjs.cn/)
-###### 4、使用方法（npm相当于后端的maven，帮助我们下载依赖）
+###### 2、官网地址
+[https://www.npmjs.com/](https://www.npmjs.com/)
+###### 3、中文官网地址
+[https://www.npmjs.cn/](https://www.npmjs.cn/)
+###### 4、使用方法
 （1）查看npm版本
 ``` cmd
 npm -v
@@ -72,11 +74,12 @@ npm run build
 
 
 # 二、yarn
-###### 1、yarn和npm是一样的（yarn需要使用npm安装，npm是npdejs自带的）
-###### 2、官网：
+###### 1、什么yarn？
+和npm是一样的（yarn需要使用npm安装，npm是npdejs自带的）。
+###### 2、官网
 （1）地址1：[https://yarnpkg.com/](https://yarnpkg.com/)
 （2）地址2：[https://classic.yarnpkg.com/en/docs/install/#windows-stable](https://classic.yarnpkg.com/en/docs/install/#windows-stable)
-###### 3、中文官网：
+###### 3、中文官网
 （1）地址1：[https://yarn.nodejs.cn/](https://yarn.nodejs.cn/)
 （2）地址2：[https://www.yarnpkg.cn/](https://www.yarnpkg.cn/)
 ###### 4、使用方法
@@ -151,7 +154,8 @@ urm use taobao
 ###### 1、什么是nvm？为什么要使用nvm？
 我们在使用nodejs的时候，一台电脑只能装一个版本的nodejs，如果我们想要更换nodejs版本，就需要我们卸载已有的版本，重新下载我们需要的版本，很麻烦，而nvm帮我们解决了这个麻烦事。
 nvm是一个 node版本管理工具，拥有它可以轻松的让我们在一台电脑上随时切换node版本。
-###### 2、官网地址：[https://nvm.uihtm.com/](https://nvm.uihtm.com/)
+###### 2、官网地址
+[https://nvm.uihtm.com/](https://nvm.uihtm.com/)
 ###### 3、使用方法
 （1）设置镜像
 	在 nvm 的安装路径下，找到 settings.txt，设置node_mirro与npm_mirror为国内镜像地址。
