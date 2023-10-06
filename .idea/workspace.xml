@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0cfc8f94-0866-4643-b284-783edd5a17b6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/2023-09-25-Git.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2023-09-25-Git.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/2023-09-28-关于npm、nrm、nvm、yarn学习记录.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2023-09-28-关于npm、nrm、nvm、yarn学习记录.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/2023-09-28-关于使用Postman笔记.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2023-09-28-关于使用Postman笔记.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/2023-10-04-关于Spring学习笔记.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2023-10-04-关于Spring学习笔记.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +62,8 @@
       <updated>1695868876805</updated>
       <workItem from="1695868886926" duration="29000" />
       <workItem from="1696238191761" duration="6492000" />
-      <workItem from="1696419915832" duration="1378000" />
+      <workItem from="1696419915832" duration="2078000" />
+      <workItem from="1696572510223" duration="38000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1696238931055</created>
@@ -122,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696245255098</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="修改文章格式标题，新增Spring学习笔记（SpringBean生命周期、SpringIOC和SpringDI）">
+      <created>1696429039316</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1696429039316</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +138,7 @@
     <MESSAGE value="1" />
     <MESSAGE value="取消名言警句每隔7秒就更新" />
     <MESSAGE value="修改文章格式标题" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改文章格式标题" />
+    <MESSAGE value="修改文章格式标题，新增Spring学习笔记（SpringBean生命周期、SpringIOC和SpringDI）" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改文章格式标题，新增Spring学习笔记（SpringBean生命周期、SpringIOC和SpringDI）" />
   </component>
 </project>
