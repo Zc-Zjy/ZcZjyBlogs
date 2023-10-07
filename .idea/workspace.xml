@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0cfc8f94-0866-4643-b284-783edd5a17b6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/2023-10-04-关于Spring学习笔记.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2023-10-04-关于Spring学习笔记.md" afterDir="false" />
-    </list>
+    <list default="true" id="0cfc8f94-0866-4643-b284-783edd5a17b6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,6 +61,7 @@
       <workItem from="1696238191761" duration="6492000" />
       <workItem from="1696419915832" duration="2078000" />
       <workItem from="1696572510223" duration="38000" />
+      <workItem from="1696645963077" duration="78000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1696238931055</created>
@@ -128,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696429039316</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="部署小程序">
+      <created>1696646030031</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1696646030031</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +144,7 @@
     <MESSAGE value="取消名言警句每隔7秒就更新" />
     <MESSAGE value="修改文章格式标题" />
     <MESSAGE value="修改文章格式标题，新增Spring学习笔记（SpringBean生命周期、SpringIOC和SpringDI）" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改文章格式标题，新增Spring学习笔记（SpringBean生命周期、SpringIOC和SpringDI）" />
+    <MESSAGE value="部署小程序" />
+    <option name="LAST_COMMIT_MESSAGE" value="部署小程序" />
   </component>
 </project>

@@ -106,8 +106,15 @@ deploy:
   type: git
   branch: master
   repo: git@gitee.com:zuo-junyuan/zuo-junyuan.git
-  
-  
+
+
+search:
+  path: /search.xml  # 索引生成路径（需要设置绝对路径，否则二级页面读不到）
+  field: post  # post page all
+  format: html  # 只支持 html 类型
+  content: true  # 是否包含正文内容
+	
+	
 restful:
   # site 可配置为数组选择性生成某些属性
   # site: ['title', 'subtitle', 'description', 'author', 'since', email', 'favicon', 'avatar']
