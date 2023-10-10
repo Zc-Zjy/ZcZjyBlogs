@@ -1,7 +1,7 @@
 ---
 title: Java8 stream 调式方法
 date: 2023-10-07 16:18:28
-tags: 问题方法合集
+tags: Java8 stream 调式方法
 categories: [后端技术,问题方法合集]
 ---
 

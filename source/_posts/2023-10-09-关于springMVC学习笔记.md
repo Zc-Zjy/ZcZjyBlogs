@@ -1,7 +1,7 @@
 ---
 title: 关于springMVC学习笔记
 date: 2023-10-09 13:54:52
-tags: Spring
+tags: springMVC
 categories: [后端技术,Spring]
 ---
 
