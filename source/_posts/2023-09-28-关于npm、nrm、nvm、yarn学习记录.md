@@ -2,7 +2,7 @@
 title: 关于npm、nrm、nvm、yarn学习记录
 date: 2023-09-28 10:50:04
 tags: nodejs
-categories: [前端技术,nodejs,npm、nrm、nvm、yarn]
+categories: [前端技术,nodejs]
 ---
 
 ***

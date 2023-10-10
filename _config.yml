@@ -13,6 +13,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+# url: https://zc-zjy.github.io
 url: https://zuo-junyuan.gitee.io
 # root: /zuo-junyuan
 permalink: :year/:month/:day/:title/
@@ -128,7 +129,7 @@ restful:
     comments: true
     path: true
     excerpt: false
-    cover: true      # 封面图，取文章第一张图片
+    cover: false      # 封面图，取文章第一张图片
     content: false
     keywords: false
     categories: true
