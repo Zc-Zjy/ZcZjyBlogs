@@ -64,6 +64,7 @@
       <workItem from="1696645963077" duration="78000" />
       <workItem from="1696662791973" duration="109000" />
       <workItem from="1696904563046" duration="122000" />
+      <workItem from="1696904976677" duration="35000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1696238931055</created>
@@ -149,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696904664271</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="修改tags标签">
+      <created>1696904996152</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1696904996152</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +171,7 @@
     <MESSAGE value="部署小程序" />
     <MESSAGE value="解决其它二级页面找不到search.xml文件问题" />
     <MESSAGE value="新增springMVC学习笔记" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增springMVC学习笔记" />
+    <MESSAGE value="修改tags标签" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改tags标签" />
   </component>
 </project>

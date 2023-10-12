@@ -221,3 +221,9 @@ System.out.println(jsonStr);
   "intList" : [ 1, 2, 3 ]
 }
 ```
+###### （6）Object类型转list
+``` java
+ObjectMapper objectMapper = new ObjectMapper();
+String json = objectMapper.writeValueAsString(object); // object是Object类型
+return objectMapper.readValue(json, List.class);
+```
