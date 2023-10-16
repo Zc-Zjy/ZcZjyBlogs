@@ -1,0 +1,190 @@
+<% 
+  var title = null, style = null;
+  if (is_post() || is_page()) {
+    title = page.title;
+  } else if (is_archive()) {
+    title = '归档';
+  } else if (is_category()) {
+    title = '分类';
+  } else if (is_tag()) {
+    title = '标签';
+  } else if (is_home()) {
+    title = ' ';
+  }
+%>
+
+<% if (title) { %>
+  <nav class="navbar">
+    <div class="left">
+      <% if (theme.navbar.back_home && !is_home()) { %>
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      <% } %>
+      <% if (theme.qrcode.enable) { %>
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      <% } %>
+      <% if (theme.color_mode.enable) { %>
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      <% } %>
+      <% if (theme.search.enable && config.search.path) { %>
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      <% } %>
+	  <div class="vertical"></div>
+	  <div id="tp-weather-widget" style="margin-left: 15px;padding: 0 10px;border-radius: 20px;"></div>
+	  <div class="vertical"></div>
+	  <div class="ZcZjy" onclick="hitokoto()">ZcZjy：<span id="ZcZjytext" class="ZcZjytext">换一句！~vo(*^＠^*)o</span></div>
+	  <div id="hitokoto" class="hitokoto">
+	    <div id="hitokoto_text" class="hitokoto">今天该说什么呢和φ(*￣0￣)...</div>
+	  </div>
+	  <style>
+	  .vertical {
+		  height: 25px;
+		  border-right: 2px solid grey;
+		  margin-left: 10px;
+		  color: white;
+		  text-shadow: 1px 1px 1px grey,
+		  			  1px 1px 5px grey,
+		  			  1px 1px 10px grey;
+	  }
+	  .dsrBSL {
+		 color: white;
+		 text-shadow: 1px 1px 1px grey,
+		 			  1px 1px 5px grey,
+		 			  1px 1px 10px grey;
+		  font-size: 15px;
+	  }  
+	  .navbar .iconfont {
+		  color: #dddddd;
+		  text-shadow: 1px 1px 1px grey;
+	  }
+	  .ZcZjy {
+		 position: relative;
+		 display: inline-block;
+		 margin-left: 15px;
+		 color: white;
+		 text-shadow: 1px 1px 1px grey,
+		 			  1px 1px 5px grey,
+		 			  1px 1px 10px grey;
+	  }
+	  .ZcZjytext {
+		  font-size: 10px;
+		  width: 150px;
+	  }
+	  .ZcZjy .ZcZjytext {
+	  visibility: hidden;
+	  color: white;
+	  text-align: center;
+	  border-radius: 10px;
+	  padding: 5px;
+	  position: absolute;
+	  z-index: 1;
+	  top: 105%;
+	  left: 50%;
+	  transform: translateX(-50%);
+	  opacity: 0;
+	  transition: opacity 0.3s;
+	  }
+	  .hitokoto {
+		  font-weight: lighter;
+		  margin-left: 5px;
+		  color: white;
+		  text-shadow: 1px 1px 1px grey,
+						1px 1px 5px grey,
+						1px 1px 10px grey;
+	  }
+	  .ZcZjy:hover .ZcZjytext {
+	  visibility: visible;
+	  opacity: 1;
+	  }
+	  .ZcZjy:hover, .hitokoto:hover {
+		  
+		  cursor: pointer;
+		  font-size: 18px;
+		  text-shadow: 0 0 0 10px #dddddd,
+					   0 0 0 20px #dddddd,
+					   0 0 0 40px #dddddd,
+					   0 0 0 80px #dddddd,
+					   0 0 0 120px #dddddd,
+					   0 0 0 160px #dddddd;
+	  }
+	  .hitokoto {
+		position: relative;
+		overflow: hidden;
+		border-bottom: 1px solid white;
+	  }
+	  .hitokoto::after {
+		content: "";
+		position: absolute;
+		right: 0px;
+		height: 32px;
+		border-right: 2px solid #dddddd;
+		animation: showInfinite 0.5s infinite both;
+	  }
+	  @keyframes showInfinite {
+	    0% {
+	      opacity: 1;
+	    }
+	    100% {
+	      opacity: 0;
+	    }
+	  }
+	  </style>
+	  <script>
+
+	  
+	  function hitokoto () {
+			$.ajax({
+				url: "https://v1.hitokoto.cn/",
+				type: 'GET',
+				dataType: 'json',
+				success: function(res) {
+					printHitokoto(res.hitokoto);
+				}
+			})
+		}
+		
+		function printHitokoto (text) {
+			var i = 0;
+			var timer = setInterval(function() {
+				if (i >= text.length) {
+					clearInterval(timer);
+				}
+				$("#hitokoto").text(text.slice(0, i++));
+			}, 100);
+		}
+		
+		function ZcZjytext() {
+		  //停止执行间隔函数
+		  if (setIntervalFun != null) {
+		   	clearInterval(setIntervalFun);
+			setIntervalFun = null;
+			$("#ZcZjytext").text("说话！~vo(*^＠^*)o");
+		  }else {
+			  setIntervalFun = setInterval("hitokoto()", 7000);
+			  $("#ZcZjytext").text("住嘴！~v`(*>﹏<*)′");
+		  }
+		}
+		(function(a,h,g,f,e,d,c,b){b=function(){d=h.createElement(g);c=h.getElementsByTagName(g)[0];d.src=e;d.charset="utf-8";d.async=1;c.parentNode.insertBefore(d,c)};a["SeniverseWeatherWidgetObject"]=f;a[f]||(a[f]=function(){(a[f].q=a[f].q||[]).push(arguments)});a[f].l=+new Date();if(a.attachEvent){a.attachEvent("onload",b)}else{a.addEventListener("load",b,false)}}(window,document,"script","SeniverseWeatherWidget","//cdn.sencdn.com/widget2/static/js/bundle.js?t="+parseInt((new Date().getTime() / 100000000).toString(),10)));
+		window.SeniverseWeatherWidget('show', {
+		  flavor: "slim",
+		  location: "WX4FBXXFKE4F",
+		  geolocation: true,
+		  language: "zh-Hans",
+		  unit: "c",
+		  theme: "auto",
+		  token: "12b1be52-c77a-49de-99f9-dcb0fd324d19",
+		  hover: "enabled",
+		  container: "tp-weather-widget"
+		});
+	  </script>
+    </div>
+    <div class="center">
+		<%= title %>
+	</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    <% if (theme.qrcode.enable) { %>
+      <div id="qrcode-navbar"></div>
+    <% } %>
+  </nav>
+<% } %>

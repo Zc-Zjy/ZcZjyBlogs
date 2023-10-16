@@ -1,0 +1,295 @@
+# --------------------------------------------------
+# Site Settings
+# --------------------------------------------------
+
+# Menu
+menu:
+  home: / || 首页
+  # galleries: /galleries/ || 摄影
+  # archives: /archives/ || 归档
+  tags: /tags/ || 标签
+  categories: /categories/ || 分类
+  # about: /about/ || 关于
+
+# Color
+color:
+  text: '#88ada6'
+  text-secondary: '#4e4e4e'
+  text-third: '#999999'
+  background: '#ffffff'
+  background-secondary: '#f6f8fa'
+  border: '#eeeeee'
+  text-dark: '#dddddd'
+  text-secondary-dark: '#9899ab'
+  text-third-dark: '#7d8594'
+  background-dark: '#1e2128'
+  background-secondary-dark: '#1a1d22'
+  border-dark: '#2b3038'
+  link: '#FF3B00'
+  link-gradient: 'linear-gradient(-60deg, #ff5858 0%, #f09819 100%)'
+  link-hover: 'none'
+
+# Favicon
+favicon:
+  small: /images/icons/dog.png
+  medium: /images/icons/dog.png
+  apple_touch_icon: /images/icons/dog.png
+  safari_pinned_tab: /images/icons/dog.svg
+  msapplication: /images/icons/dog.png
+
+# Font
+font:
+  size: 17px
+  family: 'Microsoft YaHei'
+
+# Background Image
+background_image:
+
+# Loading
+loading:
+  gif: /images/theme/loading.gif
+  lottie:
+
+# Preview
+preview:
+  enable: true
+  type: wave  # wave | cloud
+  background:
+    type: image # image video
+    default_image:
+      light: /images/theme/light.jpg
+      dark: /images/theme/dark.jpg
+    video:
+    api:  # https://source.unsplash.com/random/1920x1080
+    size: cover # css: background-size
+    position: center # css: background-position
+  motto:
+    default: 励志成为技术大牛的一名小白
+    color: '#ffffff'
+    typing: true
+    api: # https://v1.hitokoto.cn/?c=b
+    data_contents: ['data', 'content']
+    # ex.one  =>  apl: https://v1.hitokoto.cn/?encode=text&c=i  data_contents:
+    # ex.two  =>  api: https://v2.jinrishici.com/one.json  data_contents: ['data', 'content']
+
+# Navbar
+navbar:
+  enable: true
+  back_home: true
+
+# Copyright
+copyright: <p>Copyright© 2023 建站  |  ZcZjy ( 还没备案喔~！！！ )</p><p>联系我：540507521@qq.com</p><p>关于我：我是ZcZjy</p><p>积少成多，只要学不死就往死里学👀</p><p>喜欢分享，也喜欢交朋友，正在努力钻研java、spring全家桶、前端vue等等技术，梦想成为一名技术大牛</p>
+
+# Social
+social:
+  qq: tencent://message/?Menu=yes&uin=894519210 || iconQQ || '#12B7F5'
+  wechat: javascript:; || iconwechat-fill || '#09BB07'
+  instagram: https://www.instagram.com/izhaoo/ || iconinstagram || '#DA2E76'
+  github: https://github.com/zhaoo || icongithub-fill || '#9f7be1'
+  email: mailto:izhaoo@163.com || iconmail
+
+# Override Scrollbar
+scrollbar:
+  type: default # default | simple | normal | none
+
+# Fab (Float Action Button)
+fab:
+  enable: true
+  always_show: false
+
+# Search
+search:
+  enable: true
+  path: http://localhost:4000/search.xml  # 索引生成路径（需要设置绝对路径，否则二级页面读不到）
+  field: post  # post page all
+  format: html  # 只支持 html 类型
+  content: true  # 是否包含正文内容
+
+# QR Code
+qrcode:
+  enable: false
+  type: url # url | image
+  image: https://pic.izhaoo.com/weapp-code.jpg
+
+# Color Mode
+color_mode:
+  enable: true
+
+# Gray (Mourning Mode)
+gray:
+  enable: false
+
+# --------------------------------------------------
+# Post Settings
+# --------------------------------------------------
+
+# Excerpt
+excerpt:
+  enable: true
+
+# Post Image
+post_image:
+  random: local # local galleries
+  default: /images/text_cover_background/cover_background.jpg
+
+# Page Size
+post_page_size:
+  width: 1000px
+
+# Caption
+caption:
+  enable: true
+
+# Indent
+indent:
+  content:
+  excerpt:
+
+# TOC
+toc:
+  enable: true
+  always_show: true
+  min_depth: 1
+  max_depth: 6
+
+# Donate
+donate:
+  enable: true
+  alipay: /images/zjyzfb.jpg
+  wechat: /images/zjyzanshang.jpg
+
+# Copyright
+post_copyright:
+  enable: true
+
+# Carrier（copy article with one click）
+carrier:
+  enable: true
+  type: markdown # html | markdown | text
+
+# --------------------------------------------------
+# Page Settings
+# --------------------------------------------------
+
+# Galleries
+galleries:
+  enable: true
+  title: 摄影
+  subtitle: Photography
+  type: waterfall # waterfall | grid
+  columns: 3
+
+
+# --------------------------------------------------
+# Comment Settings
+# --------------------------------------------------
+
+comments:
+  enable: true
+  type: valine # gitalk | valine | changyan
+  button: true
+
+# Gitalk
+gitalk:
+  owner:
+  repo:
+  admin:
+  clientID:
+  clientSecret:
+
+# Valine
+valine:
+  appId: YBz2laX5qgCJLxNTpC7akJuU-gzGzoHsz
+  appKey: lHPh4E9b3LU0DWfqppMWL7Tt
+  placeholder: O(∩_∩)O~欢迎留言~v😍！
+  avatar: wavatar
+  pageSize: 10
+  lang: zh-CN
+
+# ChangYan
+changyan:
+  appId:
+  conf:
+
+# --------------------------------------------------
+# Plugin settings
+# --------------------------------------------------
+
+# Notification
+notification:
+  enable: false
+  delay: 4500
+  page_white_list:
+  page_black_list:
+
+# Daovoice
+daovoice:
+  enable: false
+  appId: # app_id
+
+# Tencent Chao
+tencentChao:
+  enable: false
+  appId: # app_id
+
+# LeanCloud
+leancloud:
+  enable: true
+  appId: YBz2laX5qgCJLxNTpC7akJuU-gzGzoHsz
+  appKey: lHPh4E9b3LU0DWfqppMWL7Tt
+  serverURLs: https://leancloud.cn/
+
+# Lazyload
+lazyload:
+  enable: true
+  only_post: false
+  loading:
+    gif: /images/theme/loading.gif
+    lottie:
+
+# FancyBox
+fancybox: true
+
+# Pjax
+pjax: false
+
+# HighLight
+highlight:
+  enable: true
+  style: # https://highlightjs.org/static/demo/
+    light: Xcode
+    dark: Solarized Dark
+
+# SEO
+seo:
+  baidu_auto_push: true
+
+# Analytics
+analytics:
+  baidu: # id
+  google: # id
+  cnzz: # id
+
+# --------------------------------------------------
+# Script Settings
+# --------------------------------------------------
+
+# CDN
+vendors:
+  jquery_js: https://code.jquery.com/jquery-3.6.0.min.js
+  fancybox_js: https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js
+  pjax_js: https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js
+  lazyload_js: https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js
+  qrcode_js: https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js
+  daovoice_js: https://widget.daovoice.io/widget/0f81ff2f.js
+  lottie_js: https://cdn.bootcdn.net/ajax/libs/lottie-web/5.7.12/lottie.js
+  fancybox_css: https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css
+  highlight_css: https://cdn.bootcss.com/highlight.js/9.18.1/styles/
+  iconfont_css: https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css
+
+# Custom
+custom:
+  head: 
+  foot:
+  css:
+  js:
