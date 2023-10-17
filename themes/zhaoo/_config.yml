@@ -130,7 +130,7 @@ excerpt:
 # Post Image
 post_image:
   random: local # local galleries
-  default: /images/text_cover_background/cover_background.jpg
+  default: /images/text_cover_background/cover_background_light.jpg
 
 # Page Size
 post_page_size:

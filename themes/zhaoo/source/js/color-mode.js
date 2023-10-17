@@ -69,7 +69,7 @@
       setHighlightStyle(mode);
     });
   }
-
+	
   loadColorMode();
   switchColorMode();
 }(window, document);

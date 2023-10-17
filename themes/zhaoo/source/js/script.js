@@ -3,7 +3,7 @@ console.log("%c Github %c", "background:#333333; color:#ffffff", "", "https://gi
 (function($) {
 	"use strict";
 
-	var fn = { 
+	var fn = {
 		showMenu: function() {
 			$(".menu").fadeIn(300);
 			$("body").addClass("lock-screen");

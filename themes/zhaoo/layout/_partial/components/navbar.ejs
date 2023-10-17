@@ -23,7 +23,7 @@
         <i class="iconfont iconqrcode j-navbar-qrcode"></i>
       <% } %>
       <% if (theme.color_mode.enable) { %>
-        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light" onclick="changeThemesMode()"></i>
       <% } %>
       <% if (theme.search.enable && config.search.path) { %>
         <i class="iconfont iconsearch j-navbar-search"></i>
@@ -129,7 +129,17 @@
 	  }
 	  </style>
 	  <script>
-
+	  function changeThemesMode() {
+		  let mode = '';
+		  let themesMode = localStorage.getItem('color-mode');
+		  mode = themesMode.trim() === 'light' ? '/images/text_cover_background/cover_background_dark.jpg' : '/images/text_cover_background/cover_background_light.jpg';	  		  
+		  if(themesMode != null) {
+			let imgThemes = document.getElementsByClassName('lazyload');
+			for(i in imgThemes) {
+				imgThemes[i].src = mode;
+			}	
+	      }		  
+	  }
 	  
 	  function hitokoto () {
 			$.ajax({
