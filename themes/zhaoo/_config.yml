@@ -82,11 +82,11 @@ copyright: <p>Copyright© 2023 建站  |  ZcZjy ( 还没备案喔~！！！ )</p
 
 # Social
 social:
-  qq: tencent://message/?Menu=yes&uin=894519210 || iconQQ || '#12B7F5'
+  qq: tencent://message/?Menu=yes&uin=540507521 || iconQQ || '#12B7F5'
   wechat: javascript:; || iconwechat-fill || '#09BB07'
-  instagram: https://www.instagram.com/izhaoo/ || iconinstagram || '#DA2E76'
-  github: https://github.com/zhaoo || icongithub-fill || '#9f7be1'
-  email: mailto:izhaoo@163.com || iconmail
+  # instagram: https://www.instagram.com/izhaoo/ || iconinstagram || '#DA2E76'
+  github: https://github.com/Zc-Zjy || icongithub-fill || '#9f7be1'
+  email: mailto:540507521@qq.com || iconmail
 
 # Override Scrollbar
 scrollbar:
