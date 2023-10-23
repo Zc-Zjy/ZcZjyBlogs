@@ -36,9 +36,10 @@ npm install 【包名】
 **说明：**
 npm install xxx --save --global（简写：-g）（简写：-S大写）-dev
 - xxx 表示某个依赖名字
-- --save 表示将这个依赖保存进 package.json 依赖标签里
-- -dev 表示将这个依赖保存进 package.json 开发依赖标签里。
-- --global 表示全局安装
+- --save 表示将这个依赖保存进 package.json 依赖标签里（dependencies）；
+- -dev 表示将这个依赖保存进 package.json 开发依赖标签里（devDependencies）；
+- --global 表示全局安装。
+**注：**npm5及更高版本install 和install -S效果相同，如缺省默认为--save  
 
 （4）同时下载多个依赖包
 ``` cmd
@@ -63,7 +64,11 @@ npm run serve
 ``` cmd
 npm run build
 ```
-（7）如何找依赖包
+（7）查看全局按照位置
+``` cmd
+npm config get prefix
+```
+（8）如何找依赖包
 	可以去上面第2点中的官网查找需要的依赖包名。
 	
 <br/>
