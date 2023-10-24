@@ -562,3 +562,78 @@ model.addObject("users",users.toString());
 ```
 
 14、在`show.jsp`增加`${users}`，启动项目，成功！
+
+<br/>
+
+***
+
+<br/>
+
+# 三、SpringMVC下载和上传
+### 1、下载
+``` java
+@RequestMapping("/testDown")
+public ResponseEntity<byte[]> testResponseEntity(HttpSession session) throws IOException{
+    // 获取ServletContext对象
+    ServletContext servletContext = session.getServletContext();
+    // 获取服务器中文件的真实路径
+    String realPath = servletContext.getRealPath("/static/img/1.jpg");
+    System.out.println(realPath);
+    // 创建输入流
+    InputStream is = new FileInputStream(realPath);
+    // 创建字节数组，is.available()方法是流的所有大小
+    byte[] bytes = new byte[is.available()];
+    // 将流读到字节数组中
+    is.read(bytes);
+    // 创建HttpHeaders对象设置响应头信息
+    MultiValueMap<String,String> headers = new HttpHeaders();
+    // 设置要下载方式以及下载文件的名字
+    headers.add("Content-Disposition","attachment;filename=1.jpg");
+    // 设置响应状态码
+    HttpStatus statusCode = HttpStatus.ok;
+    // 创建ResponseEntity对象，这个对象是返回包括了响应头和响应体
+    ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(bytes,headers,statusCode);
+    // 关闭输入流
+    is.close();
+    return responseEntity;
+}
+```
+
+### 2、上传
+（需要导入上传依赖）
+``` xml
+<dependency>
+    <groupId>commons-fileupload</froupId>
+    <artifactId>commons-fileupload</artifaciId>
+    <version>1.3.1</version>
+</dependency>
+```
+1、需要在前端`form`表单`form`标签设置`enctype`属性为：`multipart/form-data`，这个值表示上传功能，默认值是：`application/x-www-form-urlencoded`，表示form表单值以：`username=xxx&password=xxxx`形式传给后端。  
+2、在springMVC配置文件中配置：  
+``` xml
+<!-- 配置文件上传解析器，将上传的文件封装为MultipartFile -->
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+```
+3、controller
+``` java
+@RequestMapping("/upload") // 上传是使用post方式
+// MultipartFile 是springMVC封装好的上传对象
+public String upload(MultipartFile file,HttpSession session){
+    // 获取上传文件的文件名
+    String fileName = file.getOriginalFilename();
+    // 获取文件名的后缀
+    String suffixName = fileName.substring(fileName.lastIndexOf(".");
+    // 将uuid和后缀名拼接后的结果作为最终的文件名，以防止文件上传重复，然后导致文件被覆盖
+    fileName = UUID.randomUUID().toString.replace("-") + suffixName;
+    ServletContext servletContext = session.getServletContext();
+    String filePath = servletContext.getRealPath("file");
+    File file = new File(filePath);
+    // 判断filePath所对应路径是否存在
+    if(!file.exists()){
+        file.mkdir();
+    }
+    String finalPath = filePath + File.separator + fileName;
+    file.transferTo(new File(finalPath));
+    return "success";
+}
+```

@@ -3,6 +3,7 @@ title: Postgresql学习笔记
 date: 2023-10-17 13:38:07
 tags: Postgresql
 categories: 数据库
+toc: false
 ---
 
 ***
@@ -102,3 +103,7 @@ sudo systemctl restart postgresql-14
 6、然后就可以用navicat等工具连接了  
 
 7、卸载Postgresql的方法，[请点击这里。](https://www.cnblogs.com/june-/articles/14276416.html)
+
+8、注意事项
+（1）postgresql，它不支持单引号和反引号，只支持双引号，比如关键字在mysql中可以用反引号包裹，但在postgresql中得用双引号包裹；  
+（2）关键字后面的as不能省略；
