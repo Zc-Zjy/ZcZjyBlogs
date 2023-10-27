@@ -833,6 +833,122 @@ public final class SpringUtils implements BeanFactoryPostProcessor{
 在 `xxxAutoConfiguration` 这个自动配置类中分析，因为有两个方法，表示这个自动配置类给容器中放了两个组件，有一个组件（方法）叫 `stringRedisTemplate` ，然后去业务代码中使用自动装配注解装配这个方法。（使用组件的前提是，知道这个组件是干嘛的）  
 4、定制化（如果不满足需求，需要定制化）  
 自定义组件，自己写一个 `stringRedisTemplate` 方法，并放到容器中（自动配置类中的 `stringRedisTemplate` 这个方法上面标注了 `@ConditionalOnMissingBean`，这个注解的作用就是如果我们自己写了下面的方法，则这个自动配置类就不加载这个方法，容器中使用我们自己自定义的方法。）
+5、例子：自定义starter启动类  
+（1）步骤：  
+- 创建 aliyun-oss-spring-boot-starter 模块。（只负责依赖管理）  
+- 创建 aliyun-oss-spring-boot-autoconfigure 模块，在 starter 模块引入该模块
+- 在 aliyun-oss-spring-boot-autoconfigure 模块中定义自动配置功能，并定义自动配置文件 META-INF/spring/xxx.imports （老版本的为 META-INF/spring.factories）
+
+（2）实例（对应上面的步骤）  
+1. 创建 aliyun-oss-spring-boot-starter 模块：
+{% asset_img Springboot2.jpg %}
+{% asset_img Springboot3.jpg %}
+{% asset_img Springboot4.jpg %}
+2. 创建 aliyun-oss-spring-boot-autoconfigure 模块，在 starter 模块引入该模块，pom文件同上：
+{% asset_img Springboot5.jpg %}
+注意：没有启动类、配置文件、测试类。
+- 在步骤`1.`创建的模块pom文件中加入步骤`2.`创建的模块依赖：
+``` xml
+<dependency>
+    <groupId>com.aliyun.oss</groupId>
+    <artifactId>aliyun-oss-spring-boot-autoconfigure</artifactId>
+    <version>0.0.1-SNAPDHOT</version>
+</dependency>
+```
+- 在步骤`2.`创建的模块pom文件中引入oss依赖：
+``` xml
+<dependency>
+    <groupId>com.aliyun.oss</groupId>
+    <artifactId>aliyun-sdk-oss</artifactId>
+    <version>3.15.1</version>
+</dependency>
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.3.1</version>
+</dependency>
+<dependency>
+    <groupId>javax.activation</groupId>
+    <artifactId>activation</artifactId>
+    <version>1.1.1</version>
+</dependency>
+<dependency>
+    <groupId>org.glassfish.jaxb</groupId>
+    <artifactId>jaxb-runtime</artifactId>
+    <version>2.3.3</version>
+</dependency>
+```
+- 在`2.`模块中创建 `AliOSSProperties` 类 和 `AliOSSUtils` 类：
+``` java
+@ConfigurationProperties(prefix = "aliyun.oss")
+public class AliOSSProperties {
+    private String endpoint;
+    private String accessKeyId;
+    private String accessKeySecret;
+    private String bucketName;
+    
+    // get 和 set 方法.....
+}
+```
+``` java
+public class AliOSSUtils {
+    
+    private AliOSSProperties aliOSSProperties;
+
+    // aliOSSProperties 的get方法
+    public AliOSSProperties getAliOSSProperties() {
+        return aliOSSProperties;
+    }
+
+    // aliOSSProperties 的set方法
+    public AliOSSProperties setAliOSSProperties(AliOSSProperties aliOSSProperties) {
+        this.aliOSSProperties = aliOSSProperties;
+    }
+
+    public String upload(MultipartFile file) throws IOException {
+        String endpoint = aliOSSProperties.getEndpoint();
+        String accessKeyId= aliOSSProperties.getAccessKeyId();
+        String accessKeySecret= aliOSSProperties.getAccessKeySecret();
+        String bucketName= aliOSSProperties.getBcketName();
+
+        // 获取上传的文件输入流
+        InputStrem inputStream = file.getInputStream();
+        
+        // 避免文件名重复导致被覆盖
+        String originalFileName = file.getOriginalFilename();
+        String fileName = UUID.randomUUID().toString() + originalFileName.substring(originalFileName.lastIndexOf("."));
+
+        // 上传文件到OSS
+        OSS ossClient = new OSSClientBuilder().build(endpoint,accessKeyId,accessKeySecret);
+        ossClient.putObject(bucketName,fileName,inputStream);
+
+        // 拼接文件访问路径
+        String url = endpoint.split("//")]0] + "//" + bucketName + "." + endpoint.split("//")[1] + "/";
+
+        // 关闭ossClient
+        ossClient.shutdown();
+        return url;
+    }
+}
+```
+- 在`2.`模块中创建 AliOSSAutoConfiguration 配置类：
+``` java
+@Configuration
+@EnableConfigurationProperties(AliOSSProperties.class)
+public class AliOSSAutoConfiguration {
+
+    @Bean
+    public AliOSSUtils aliOSSUtils(AliOSSProperties aliOSSProperties) {
+        AliOSSUtils aliOSSUtils = new AliOSSUtils();
+        aliOSSUtils.setAliOSSProperties(aliOSSProperties);
+        return aliOSSUtils;
+    }
+}
+```
+
+3. 在 `aliyun-oss-spring-boot-autoconfigure` 模块中定义自动配置功能，并定义自动配置文件 `META-INF/spring/xxx.imports` （老版本的为 `META-INF/spring.factories`）
+- 在`2.`模块的`resource`目录下创建文件夹 `META-INF`，继续在`META-INF`文件夹下创建`spring`文件夹，继续在`spring`文件夹下创建：`org.springframework.boot.autoconfigure.AutoConfiguration.imports`文件
+- 将 `AliOSSAutoConfiguration` 类的全类名填入`org.springframework.boot.autoconfigure.AutoConfiguration.imports`文件中
 
 
 <br/>
@@ -945,3 +1061,84 @@ public class WebConfig implements WebWvcConfigure{
 （4）拦截器基于java反射机制，过滤器基于函数回调。  
 （5）拦截器只对`action`请求起作用，过滤器几乎所有请求都起作用。  
 （6）拦截器可以多次被调用，过滤器只能在初始化的时候被调用一次。
+
+### 3、热部署
+###### 1、使用 jrebel 插件
+编写玩代码后，使用 `jrebel` 这个插件自带的启动按钮启动，然后每次编写玩都按 `ctrl + f9` 使用热部署。
+
+###### 2、设置IDEA热部署
+设置后，我们就不用频繁的去手动重启，它会自动刷新。就是写好代码后，在IDEA中按`ctrl + F9`，再去浏览器刷新。如果不想按`ctrl + F9`，也可以这样设置，先设置，`Settings ---> Build ---> Compiler`，设置自动编译（`Builed project automatically`勾选），然后`ctrl + shift + alt + /`，点击`Registry`，勾选`compiler.automake.allow.app.running`。
+
+
+
+
+<br/>
+
+***
+
+<br/>
+
+# 四、Springboot使用过程中遇到的问题合集
+### 1、springboot自动注入问题
+1、使用了`@Component`注解还是无法获取到`bean`对象  
+原因：是因为`springboot`扫描器没有扫描到，默认扫描`springboot`启动类同级的包。  
+（1）解决方法一：需要到`springboot`启动类上加上包扫描注解`@ComponentScan`，而且不止要扫描需要扫描的包，还要扫描原来`springboot`启动类同级的包：`@ComponentScan({"xxx.xxx.xxx","yyy.yyy.yyy})`。  
+（2）解决方法二：在`springboot`启动类上使用`@Import`注解，例子：`@Import({Demo1.class,Demo2.class})`，大括号里的`class`是需要被扫描到的类（不需要使用任何注解的普通类）。  
+（3）解决方法三：新建一个配置类（使用`@Configuration`注解标注的类），把需要被扫描的类在这个配置类中使用`@Bean`注解标注，在启动类上使用`@Import`注解，将这个配置类导入。例子：  
+``` java
+// 配置类
+public class DemoConfig{
+    
+    @Bean
+    public Demo1 demo1(){
+        return new Demo1();
+    }
+
+    @Bean
+    public Demo2 demo2(){
+        return new Demo2();
+    }
+}
+
+// 启动类
+@Import({DemoConfig.class})
+@SpringBootApplication
+public class Demo(){
+    
+    public static void main(String[] args){.....}
+}
+```
+（4）解决方法四：新建一个配置类（使用`@Configuration`注解标注的类），把需要被扫描的类在这个配置类中使用`@Bean`注解标注，在新建一个选择器类实现`ImportSelector`接口，实现这个接口的方法，在这个方法中，将配置类返回，然后将这个选择器类在启动类上使用`@Import`注解导入，例子：  
+``` java
+// 配置类
+public class DemoConfig{
+    
+    @Bean
+    public Demo1 demo1(){ // 需要扫描的类
+        return new Demo1();
+    }
+
+    @Bean
+    public Demo2 demo2(){ // 需要扫描的类
+        return new Demo2();
+    }
+}
+
+// 选择器类
+public class DemoSelect implements ImportSelector{
+
+    public String[] selectImports(AnnotationMetadata i){
+        return new String[]{"xxx.xxx.DemoConfig"}; // 上面的配置类包路径
+    }
+}
+
+// 启动类
+@Import({DemoSelect.class})  // 将上面选择器类导入
+@SpringBootApplication
+public class Demo(){
+    
+    public static void main(String[] args){.....}
+}
+```
+**总结：**  
+上面的方法太繁琐了，一般需要扫描的包中会提供给我们一个注解`@EnableXXXX`注解，这个注解封装了上面使用到`@Import`和`@ImportSelector`注解，我们直接在启动类上使用`@EnableXXXX`注解就可以了。
