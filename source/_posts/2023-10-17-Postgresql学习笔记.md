@@ -107,3 +107,62 @@ sudo systemctl restart postgresql-14
 8、注意事项
 （1）postgresql，它不支持单引号和反引号，只支持双引号，比如关键字在mysql中可以用反引号包裹，但在postgresql中得用双引号包裹；  
 （2）关键字后面的as不能省略；
+
+
+<br/>
+
+***
+
+<br/>
+
+
+# 二、Postgresql使用方法
+### 1、登录命令
+``` sql
+#连接指定服务器上的数据库
+psql -h IP -p 端口 -U 用户名 -d 数据库名 -W
+```
+说明：  
+`-h`：数据库所在的IP地址；  
+`-p`：（默认5432）数据库的监听端口；  
+`-U`：用户名；  
+`-d`：数据库名称；    
+`-W`：提示输入密码；
+
+### 2、常用命令说明
+`\?`：所有命令帮助；  
+`\l`：列出所有数据库；  
+`\d`：列出数据库中所有表；  
+`\dt`：列出数据库中所有表；  
+`\d [table_name]`：显示指定表的结构；  
+`\di`：列出数据库中所有 index；  
+`\dv`：列出数据库中所有 view；  
+`\h`：sql命令帮助；  
+`\q`：退出连接；  
+`\c [database_name]`：切换到指定的数据库；  
+`\c`：显示当前数据库名称和用户；  
+`\conninfo`：显示客户端的连接信息；  
+`\du`：显示所有用户；  
+`\dn`：显示数据库中的schema；  
+`\encoding`：显示字符集；  
+`select version();`：显示版本信息；  
+`\i testdb.sql`：执行sql文件；  
+`\x`：扩展展示结果信息，相当于MySQL的\G；  
+`\o /tmp/test.txt`：将下一条sql执行结果导入文件中。
+
+### 3、关于对表的操作
+1、向表中新增一列属性：  
+``` sql
+ALTER TABLE table_name ADD COLUMN  column_name1 data_type;
+```
+
+
+<br/>
+
+***
+
+<br/>
+
+
+# 三、详细教程
+[请点击跳转](https://zhuanlan.zhihu.com/p/646946752)
